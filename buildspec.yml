@@ -18,4 +18,4 @@ phases:
   post_build:
     commands:
       - echo build completed on `date`
-      - aws s3 sync build/ s3://react-quiz-app-codebuild-mar-16 --acl public-read
+      - aws s3 sync build/ s3://react-quiz-app-codebuild-mar-16/ --acl public-read
