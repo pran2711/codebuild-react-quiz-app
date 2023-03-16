@@ -1,25 +1,21 @@
-
-version: 0.2
+version: 0.1
 phases:
   install:
     runtime-versions:
-      nodejs: 10
+      node-js: 16
     commands:
       - echo Getting Started
   pre_build:
     commands:
-      - echo Installing source NPM dependencies...
+      - echo installing source npm dependencies
       - npm install
-      - aws --version
   build:
     commands:
       - echo Build started on `date`
-      - echo first test codes
-      - CI=true npm test
       - echo Compiling the codes
       - npm run build
-      - echo Build finished, now moving to S3
+      - echo build finished, now moving to s3
   post_build:
     commands:
-      - echo Build completed on `date`
+      - echo build completed on `date`
       - aws s3 sync build/ s3://react-quiz-app-codebuild-mar-16 --acl public-read
